@@ -54,7 +54,7 @@ function getDomainById($id)
                                 <div class="panel-heading">
                                     <div class="text-muted bootstrap-admin-box-title">排名信息</div>
                                     <div style="float:right;">
-                                        <a class=" btn btn-success" style="margin-top:-8px;" href="/runAuto.php" >手动采集</a>
+                                        <a class=" btn btn-success" style="margin-top:-8px;" href="/runAuto.php" id="shoudong">手动采集</a>
                                     </div>
                                 </div>
                                 <div class="bootstrap-admin-panel-content">
@@ -132,7 +132,10 @@ function getDomainById($id)
             format: 'yyyy-mm-dd'
         });
     };
-
+        $('#shoudong').click(function(){
+            $('#shoudong').html('采集中，请稍等..');
+            $('#shoudong').attr("disabled", true); 
+        });
     </script>
     </body>
 </html>
