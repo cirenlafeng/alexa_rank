@@ -30,6 +30,11 @@ function getDomainById($id)
            <script type="text/javascript" src="js/respond.min.js"></script>
         <![endif]-->
     </head>
+    <style type="text/css">
+        .row{
+            width: 1000px;
+        }
+    </style>
     <body class="bootstrap-admin-with-small-navbar">
     @include('top')
 
@@ -68,7 +73,7 @@ function getDomainById($id)
                                     </form>
                                 </div>
                                     <?php
-                                        $country = DB::table('domain_infos')->where('created_at','>=',$start)->where('created_at','<=',$end)->get();
+                                        $country = DB::table('domain_infos')->where('created_at','>=',$start)->where('created_at','<=',$end)->orderBy('rank_global','desc')->get();
                                     ?>
                                     <table class="table table-striped">
                                         <thead>
