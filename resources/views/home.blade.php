@@ -73,7 +73,7 @@ function getDomainById($id)
                                     </form>
                                 </div>
                                     <?php
-                                        $country = DB::table('domain_infos')->where('created_at','>=',$start)->where('created_at','<=',$end)->orderBy('rank_global','desc')->get();
+                                        $country = DB::table('domain_infos')->where('created_at','>=',$start)->where('created_at','<=',$end)->orderBy('rank_global','asc')->get();
                                     ?>
                                     <table class="table table-striped">
                                         <thead>
