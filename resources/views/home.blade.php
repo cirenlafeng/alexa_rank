@@ -59,10 +59,10 @@ function getDomainById($id)
                                 <div class="panel-heading">
                                     <div class="text-muted bootstrap-admin-box-title">排名信息</div>
                                     <div style="float:right;">
-                                        <a class=" btn btn-success" style="margin-top:-8px;" href="/runAuto.php" id="shoudong">手动采集</a>
+                                        <a class=" btn btn-success" style="margin-top:-8px;" href="/runAuto.php" id="shoudong">手动刷新</a>
                                     </div>
                                 </div>
-                                <div class="bootstrap-admin-panel-content">
+                                <!-- <div class="bootstrap-admin-panel-content">
                                     <form action="" method="get">
                                     <div class="col-xs-6">
                                         <div class="form-group">
@@ -71,9 +71,20 @@ function getDomainById($id)
                                             <input type="submit" value="提交">
                                         </div>
                                     </form>
-                                </div>
+                                </div> -->
                                     <?php
                                         $country = DB::table('domain_infos')->where('created_at','>=',$start)->where('created_at','<=',$end)->orderBy('rank_global','asc')->get();
+                                        $guodu = [];
+                                        foreach ($country as $key => $value) {
+                                            if($value->rank_global == 0)
+                                            {
+                                                $guodu[] = $value;
+                                                unset($country[$key]);
+                                            }
+                                        }
+                                        foreach ($guodu as $key => $value) {
+                                            $country[] = $value;
+                                        }
                                     ?>
                                     <table class="table table-striped">
                                         <thead>
@@ -89,14 +100,17 @@ function getDomainById($id)
                                         </thead>
                                         <tbody>
                                             @foreach($country as $val)
+                                            <?php
+                                                $yuming = getDomainById($val->domain_id);
+                                            ?>
                                             <tr>
-                                                <td>{{ getDomainById($val->domain_id) }}</td>
+                                                <td><a href="http://{{ $yuming }}" target="_blank">{{ $yuming }}</a></td>
                                                 <td>{{ $val->rank_global }}</td>
                                                 <td>{{ $val->tiaochulv }}</td>
                                                 <td>{{ $val->liulanliang }}</td>
                                                 <td>{{ $val->chixushijian }}</td>
                                                 <td>{!! $val->rank_country_all !!}</td>
-                                                <td><img src="{{ $val->rank_pic }}" width="200px;"></td>
+                                                <td><a href="https://www.alexa.com/siteinfo/{{ $yuming }}" target="_blank"><img src="{{ $val->rank_pic }}" width="200px;"></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
