@@ -50,6 +50,18 @@
                                                 请勿填写http:// 或 https://
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label" for="domain_type">类型</label>
+                                            <div class="col-lg-4">
+                                                <select id="domain_type" name="domain_type" class="form-control">
+                                                    <option value="交易所" >交易所</option>
+                                                    <option value="钱包" >钱包</option>
+                                                    <option value="官网" >官网</option>
+                                                    <option value="OTC" >OTC</option>
+                                                    <option value="媒体" >媒体</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <br>
                                         <button type="submit" class="btn btn-primary">保存</button>
                                         <button type="reset" class="btn btn-default" onclick="history.go(-1);">取消</button>

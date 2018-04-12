@@ -49,6 +49,7 @@ class DomainController extends Controller
             exit('没有权限');
         }
         $domain = Request::input('domain','');
+        $domain_type = Request::input('domain_type','交易所');
         $domain = str_replace('https://', '', $domain);
         $domain = str_replace('http://', '', $domain);
         $domain = str_replace('/', '', $domain);
@@ -60,6 +61,7 @@ class DomainController extends Controller
         }
         $storeData = [];
         $storeData['domain'] = $domain;
+        $storeData['domain_type'] = $domain_type;
         $storeData['created_at'] = date('Y-m-d H:i:s',time());
         $storeData['updated_at'] = date('Y-m-d H:i:s',(time()-86400));
         DB::table('domains')->insert($storeData);

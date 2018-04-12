@@ -49,6 +49,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>域名</th>
+                                                <th>类型</th>
                                                 <th>创建时间</th>
                                                 <th>操作</th>
                                             </tr>
@@ -58,6 +59,7 @@
                                             <tr>
                                                 <td>{{$val->id}}</td>
                                                 <td>{{$val->domain}}</td>
+                                                <td>{{$val->domain_type}}</td>
                                                 <td>{{$val->created_at}}</td>
                                                 <td>
                                                     <div style="float:left;margin-right:15px">

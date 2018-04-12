@@ -20,7 +20,7 @@ function getDomainById($id)
 {
     $domain =  DB::table('domains')->where('id',$id)->first();
     if($domain){
-        return $domain->domain;
+        return $domain;
     }
 }
 ?>
@@ -90,12 +90,13 @@ function getDomainById($id)
                                         <thead>
                                             <tr>
                                                 <th width="10%">域名</th>
-                                                <th width="8%">全球排名</th>
-                                                <th width="8%">跳出率</th>
-                                                <th width="12%">访问者每日浏览次数</th>
-                                                <th width="10%">停留时间</th>
-                                                <th width="42%">地区排名</th>
-                                                <th width="10%">趋势图</th>
+                                                <th width="8%">类型</th>
+                                                <th width="7%">全球排名</th>
+                                                <th width="7%">跳出率</th>
+                                                <th width="11%">访问者每日浏览次数</th>
+                                                <th width="8%">停留时间</th>
+                                                <th width="40%">地区排名</th>
+                                                <th width="9%">趋势图</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -104,13 +105,14 @@ function getDomainById($id)
                                                 $yuming = getDomainById($val->domain_id);
                                             ?>
                                             <tr>
-                                                <td><a href="http://{{ $yuming }}" target="_blank">{{ $yuming }}</a></td>
+                                                <td><a href="http://{{ $yuming->domain }}" target="_blank">{{ $yuming->domain }}</a></td>
+                                                <td>{{ $yuming->domain_type }}</td>
                                                 <td>{{ $val->rank_global }}</td>
                                                 <td>{{ $val->tiaochulv }}</td>
                                                 <td>{{ $val->liulanliang }}</td>
                                                 <td>{{ $val->chixushijian }}</td>
                                                 <td>{!! $val->rank_country_all !!}</td>
-                                                <td><a href="https://www.alexa.com/siteinfo/{{ $yuming }}" target="_blank"><img src="{{ $val->rank_pic }}" width="200px;"></a></td>
+                                                <td><a href="https://www.alexa.com/siteinfo/{{ $yuming->domain }}" target="_blank"><img src="{{ $val->rank_pic }}" width="200px;"></a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
