@@ -90,11 +90,11 @@ function getDomainById($id)
                                         <thead>
                                             <tr>
                                                 <th width="10%">域名</th>
-                                                <th width="8%">类型</th>
-                                                <th width="7%">全球排名</th>
+                                                <th width="10%">类型</th>
+                                                <th width="6%">全球排名</th>
                                                 <th width="7%">跳出率</th>
                                                 <th width="11%">访问者每日浏览次数</th>
-                                                <th width="8%">停留时间</th>
+                                                <th width="7%">停留时间</th>
                                                 <th width="40%">地区排名</th>
                                                 <th width="9%">趋势图</th>
                                             </tr>
