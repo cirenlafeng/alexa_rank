@@ -8,8 +8,7 @@ date_default_timezone_set('Asia/Riyadh');
 error_reporting(E_ALL ^ E_NOTICE);
 
 $lingchen = date('Y-m-d H:i:s',strtotime(date('Y-m-d',time())));
-
-$env = file_get_contents('.env');
+$env = file_get_contents(__DIR__.'/.env');
 $config = explode("\n", $env);
 foreach ($config as $key => $value) {
 	if(strstr($value, 'DB_HOST'))
